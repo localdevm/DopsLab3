@@ -1,0 +1,22 @@
+---
+- name: install git and python
+  apt: name={{ item }} state=present
+  with_items:
+   - git
+   - python-pip
+
+- name: install flask
+  pip: name={{ item }}
+  with_items:
+   - flask
+   - flask-phrase
+
+- name: checkout git repo
+  git:
+   repo: 'https://github.com/phrase/flask-demo-application.git'
+   dest: /var/www/
+
+- name: run application
+  shell: python flaskr.py>>log.txt&
+  args:
+   chdir: /var/www/

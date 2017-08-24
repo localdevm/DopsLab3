@@ -1,0 +1,10 @@
+---
+- name: Install HAProxy
+  apt: name={{ item }} state=present
+  with_items:
+   - haproxy
+
+- name: set config file of HAProxy
+  template: src=haproxy.cfg dest=/etc/haproxy.cfg
+  notify:
+   - restart haproxy

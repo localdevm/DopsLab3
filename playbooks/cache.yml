@@ -1,0 +1,4 @@
+- hosts: cache
+  become: true
+  roles:
+    - cache
