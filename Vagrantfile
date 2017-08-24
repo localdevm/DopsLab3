@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = "ubuntu/xenial64"
 
-  #Manager als load balancer
+  #Manager als load balancer yes
   config.vm.define "mgr" do |mgr|
     mgr.vm.hostname = "mgr.site"
     mgr.vm.network "private_network", ip: "192.168.50.10"
